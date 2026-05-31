@@ -133,31 +133,6 @@ RailwayDelayIntelligence/
 
 ---
 
-## ⚙️ Pipeline Flow
-
-```mermaid
-flowchart TD
-    RAW[/"Raw JSON Files\nHDFS railway_raw"/]
-    RAW --> RTC[RawToClean.java\nExplode GeoJSON · Remove nulls · Write Parquet · Create Hive tables]
-    RTC --> CLEAN[(HDFS railway_clean\nParquet)]
-    CLEAN --> HIVE[Hive railway_db\ntrains_clean · stations_clean · schedules_clean]
-
-    HIVE --> ZA[ZoneAnalysis.java\n4 analyses]
-    HIVE --> SA[StationAnalysis.java\n4 analyses]
-    HIVE --> RA[RouteAnalysis.java\n4 analyses]
-    HIVE --> DA[DurationAnalysis.java\n4 analyses]
-
-    DA --> UDF{JourneyClassifierUDF}
-
-    ZA --> MW[MySQLWriter.java]
-    SA --> MW
-    RA --> MW
-    UDF --> MW
-    MW --> DB[(MySQL railway_db\nzone · station · route · duration)]
-```
-
----
-
 ## 📦 Maven Dependencies
 
 | Artifact                 | Version |
