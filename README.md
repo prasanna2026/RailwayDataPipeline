@@ -1,4 +1,4 @@
-# 🚂 RailwayDelayIntelligence — Indian Railway Big Data Analytics System
+# 🚂 RailwayDataPipeline — Indian Railway Big Data Analytics System
 
 A Big Data pipeline that analyzes real Indian Railway data using Java, Spark, HDFS, Hive, and MySQL.
 Processes **5,208 trains**, **8,990 stations**, and **3,89,245 schedules** to extract zone, station, route, and duration insights.
